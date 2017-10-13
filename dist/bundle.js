@@ -21196,6 +21196,7 @@ module.exports = function() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export ExampleWorkBubble */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 
@@ -21237,6 +21238,7 @@ class ExampleWorkBubble extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Co
 	}
 }
 /* harmony default export */ __webpack_exports__["a"] = (ExampleWork);
+
 
 /***/ })
 /******/ ]);
