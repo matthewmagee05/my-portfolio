@@ -4,6 +4,8 @@ phases:
   build:
     command:
       - echo Nothing to do yet
+      - npm install
+      - npm run webpack
 artifacts:
   files:
     - index.html

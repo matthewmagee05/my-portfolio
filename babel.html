@@ -1,0 +1,69 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <style type="text/css">
+        	.errorBox {
+        		border: 1px solid red;
+        		background-color: #eebbbb;
+        		margin: 1em;
+        		padding: 2em;
+        	}
+
+        	.errorBox--hidden {
+        		display: none;
+        	}
+
+        </style>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+        <!--<link rel="stylesheet" href="css/main.css"> -->
+    </head>
+    <body>
+        <main>
+        	<label>Name: <input id="name" type="text"/></label>
+        	<button id="submit_info">Click me!</button>
+        	<div id="content"></div>
+        	<div id="error" class="errorBox--hidden">Error message goes here</div>
+        </main>
+        <script type="https://unpkg.com/babel-standalone"></script>
+        <script type="text/javascript" data-presets="latest">
+
+        const getMessage = (name) => `Welcome to Javascript, ${name}`;
+        const button = document.getElementById('submit_info');
+        const messageArea = document.getElementById('error');
+        const contentArea = document.getElementById('content');
+        button.addEventListener('click', (evt) => {
+        	messageArea.className = 'errorBox--hidden';
+        	contentArea.textContent = '';
+        	let name = document.getElementById("name").value;
+
+        	if(name.length < 2) {
+        		messageArea.textContent = 'You need to enter a name!';
+        		messageArea.className = 'errorBox';
+        	} else {
+				contentArea.textContent = getMessage(name);
+        	}
+        });
+        
+        </script>
+
+        <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.4.min.js"><\/script>')</script>
+
+        <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+        <script>
+            window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+            ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
+        </script>
+        <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+    </body>
+</html>
