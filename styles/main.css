@@ -214,7 +214,7 @@ h1, h2, h3, h4, h5, h6 {
   top: 5rem;
   font-size: 4rem;
   z-index: 1;
-  curson: pointer;
+  cursor: pointer;
 }
 
 .modal__text {
@@ -236,4 +236,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .modal__image {
   opacity: 0.2;
+}
+
+.modal__techUsed {
+  list-style-type: none;
+  display: inline-block;
 }

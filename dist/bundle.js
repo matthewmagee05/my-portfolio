@@ -21265,6 +21265,7 @@ class ExampleWorkBubble extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Co
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export TechnologyLogo */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 
@@ -21273,6 +21274,7 @@ class ExampleWorkModal extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Com
 	render() {
 		let example = this.props.example;
 		let modalClass = this.props.open ? 'modal--open' : 'modal--closed';
+
 		return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 			'div',
 			{ className: 'background--skyBlue ' + modalClass },
@@ -21299,13 +21301,36 @@ class ExampleWorkModal extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Com
 					'p',
 					{ className: 'modal__description' },
 					example.desc
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'h4',
+					null,
+					'Technologies Used:'
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'ul',
+					null,
+					example.techUsed.map((data, index) => {
+						return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(TechnologyLogo, { imageSrc: data, key: index });
+					})
 				)
 			)
 		);
 	}
 }
 
+class TechnologyLogo extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+	render() {
+		return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+			'li',
+			{ className: 'modal__techUsed' },
+			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: this.props.imageSrc })
+		);
+	}
+}
+
 /* harmony default export */ __webpack_exports__["a"] = (ExampleWorkModal);
+
 
 /***/ }),
 /* 34 */
@@ -21320,7 +21345,8 @@ const myWork = [{
 		desc: 'example screenshot of a project involving code',
 		src: 'images/example1.png',
 		comment: ''
-	}
+	},
+	techUsed: ['images/technologies-used-images/react.jpg', 'images/technologies-used-images/babel.jpg', 'images/technologies-used-images/webpack.jpg', '(images/technologies-used-images/jestlogo.jpg', 'images/technologies-used-images/github.svg.jpg', 'images/technologies-used-images/s3.jpg', 'images/technologies-used-images/route-53.jpg', 'images/technologies-used-images/logo-amazon-cloudfront.jpg', 'images/technologies-used-images/codebuild.jpg', 'images/technologies-used-images/AWS-Lambda.jpg', 'images/technologies-used-images/aws-codepipeline.jpg']
 }, {
 	title: 'Portfolio Boilerplate',
 	href: 'https://example.com',
@@ -21329,7 +21355,8 @@ const myWork = [{
 		desc: 'A serverless Portfolio',
 		src: 'images/example2.png',
 		comment: ''
-	}
+	},
+	techUsed: []
 }, {
 	title: 'Work Example',
 	href: 'https://example.com',
@@ -21338,7 +21365,8 @@ const myWork = [{
 		desc: 'example screenshot of a project involving cats',
 		src: 'images/example3.png',
 		comment: ''
-	}
+	},
+	techUsed: []
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (myWork);
