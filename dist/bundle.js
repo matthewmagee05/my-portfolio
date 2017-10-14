@@ -963,34 +963,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__example_work__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__social_media_links__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__data_example_work__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__data_social_media_links__ = __webpack_require__(35);
 
 
 
 
-const myWork = [{
-	title: 'Work Example',
-	image: {
-		desc: 'example screenshot of a project involving code',
-		src: 'images/example1.png',
-		comment: ''
-	}
-}, {
-	title: 'Portfolio Boilerplate',
-	image: {
-		desc: 'A serverless Portfolio',
-		src: 'images/example2.png',
-		comment: ''
-	}
-}, {
-	title: 'Work Example',
-	image: {
-		desc: 'example screenshot of a project involving cats',
-		src: 'images/example3.png',
-		comment: ''
-	}
-}];
 
-__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__example_work__["a" /* default */], { work: myWork }), document.getElementById('example-work'));
+
+
+__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__social_media_links__["a" /* default */], { socialMedia: __WEBPACK_IMPORTED_MODULE_5__data_social_media_links__["a" /* default */] }), document.getElementById('social-media-links'));
+__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__example_work__["a" /* default */], { work: __WEBPACK_IMPORTED_MODULE_4__data_example_work__["a" /* default */] }), document.getElementById('example-work'));
 
 /***/ }),
 /* 16 */
@@ -21199,15 +21183,51 @@ module.exports = function() {
 /* unused harmony export ExampleWorkBubble */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__example_work_modal__ = __webpack_require__(33);
+
 
 
 class ExampleWork extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			modalOpen: false,
+			selectedExample: this.props.work[0]
+		};
+
+		this.openModal = this.openModal.bind(this);
+		this.closeModal = this.closeModal.bind(this);
+	}
+
+	openModal(evt, example) {
+		this.setState({
+			modalOpen: true,
+			selectedExample: example
+		});
+	}
+
+	closeModal(evt) {
+		this.setState({
+			modalOpen: false
+		});
+	}
+
 	render() {
 		return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-			"section",
-			{ className: "section section--alignCentered section--description" },
-			this.props.work.map((example, index) => {
-				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(ExampleWorkBubble, { example: example, key: index });
+			'span',
+			null,
+			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				'section',
+				{ className: 'section section--alignCentered section--description' },
+				this.props.work.map((example, index) => {
+					return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(ExampleWorkBubble, { example: example, key: index, openModal: this.openModal });
+				})
+			),
+			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__example_work_modal__["a" /* default */], {
+				example: this.state.selectedExample,
+				open: this.state.modalOpen,
+				closeModal: this.closeModal
 			})
 		);
 	}
@@ -21217,27 +21237,171 @@ class ExampleWorkBubble extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Co
 	render() {
 		let example = this.props.example;
 		return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-			"div",
-			{ className: "section__exampleWrapper" },
+			'div',
+			{ className: 'section__exampleWrapper', onClick: evt => this.props.openModal(evt, example) },
 			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-				"div",
-				{ className: "section__example" },
-				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { alt: example.image.desc, className: "section__exampleImage", src: example.image.src }),
+				'div',
+				{ className: 'section__example' },
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { alt: example.image.desc, className: 'section__exampleImage', src: example.image.src }),
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					"dl",
-					{ className: "color--cloud" },
+					'dl',
+					{ className: 'color--cloud' },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						"dt",
-						{ className: "section__exampleTitle section__text--centered" },
+						'dt',
+						{ className: 'section__exampleTitle section__text--centered' },
 						example.title
 					),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("dd", null)
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('dd', null)
 				)
 			)
 		);
 	}
 }
 /* harmony default export */ __webpack_exports__["a"] = (ExampleWork);
+
+
+/***/ }),
+/* 33 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+
+
+class ExampleWorkModal extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+	render() {
+		let example = this.props.example;
+		let modalClass = this.props.open ? 'modal--open' : 'modal--closed';
+		return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+			'div',
+			{ className: 'background--skyBlue ' + modalClass },
+			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				'span',
+				{ className: 'color--cloud modal__closeButton' },
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-window-close-o', onClick: this.props.closeModal })
+			),
+			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { alt: example.image.desc, className: 'modal__image', src: example.image.src }),
+			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				'div',
+				{ className: 'color--cloud modal__text' },
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'h2',
+					{ className: 'modal__title' },
+					example.title
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'a',
+					{ className: 'color--skyBlue modal__link', href: example.href },
+					'Check it out'
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'p',
+					{ className: 'modal__description' },
+					example.desc
+				)
+			)
+		);
+	}
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (ExampleWorkModal);
+
+/***/ }),
+/* 34 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const myWork = [{
+	title: 'Work Example',
+	href: 'https://example.com',
+	desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam perspiciatis necessitatibus laboriosam recusandae. Eveniet eum, odio consequatur, deserunt vel asperiores. Atque, molestiae obcaecati quibusdam ex repellendus quas beatae doloremque ratione?',
+	image: {
+		desc: 'example screenshot of a project involving code',
+		src: 'images/example1.png',
+		comment: ''
+	}
+}, {
+	title: 'Portfolio Boilerplate',
+	href: 'https://example.com',
+	desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam perspiciatis necessitatibus laboriosam recusandae. Eveniet eum, odio consequatur, deserunt vel asperiores. Atque, molestiae obcaecati quibusdam ex repellendus quas beatae doloremque ratione?',
+	image: {
+		desc: 'A serverless Portfolio',
+		src: 'images/example2.png',
+		comment: ''
+	}
+}, {
+	title: 'Work Example',
+	href: 'https://example.com',
+	desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam perspiciatis necessitatibus laboriosam recusandae. Eveniet eum, odio consequatur, deserunt vel asperiores. Atque, molestiae obcaecati quibusdam ex repellendus quas beatae doloremque ratione?',
+	image: {
+		desc: 'example screenshot of a project involving cats',
+		src: 'images/example3.png',
+		comment: ''
+	}
+}];
+
+/* harmony default export */ __webpack_exports__["a"] = (myWork);
+
+/***/ }),
+/* 35 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const socialMedia = [{
+	title: 'LinkedIn Profile',
+	href: 'https://www.linkedin.com/in/mmagee05/',
+	icon: 'fa fa-linkedin'
+}, {
+	title: 'Github Profile',
+	href: 'https://github.com/matthewmagee05',
+	icon: 'fa fa-github'
+}, {
+	title: 'Resume',
+	href: 'resume.pdf',
+	icon: 'fa fa-file-text'
+}];
+
+/* harmony default export */ __webpack_exports__["a"] = (socialMedia);
+
+/***/ }),
+/* 36 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export SocialMediaLink */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+
+
+class SocialMediaWrapper extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+	render() {
+		return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+			"ul",
+			{ className: "section--social" },
+			this.props.socialMedia.map((data, index) => {
+				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(SocialMediaLink, { data: data, key: index });
+			})
+		);
+	}
+}
+
+class SocialMediaLink extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+	render() {
+		let data = this.props.data;
+		return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+			"li",
+			{ className: "socialWrapper" },
+			__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				"a",
+				{ className: "color--skyBlue social", title: data.title, target: "_blank", href: data.href },
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("i", { className: data.icon })
+			)
+		);
+	}
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (SocialMediaWrapper);
 
 
 /***/ })

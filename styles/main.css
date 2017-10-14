@@ -20,16 +20,24 @@
     rgb(236, 240, 241)
 */
 
+.header { 
+  background-color: #FD9827;
+}
+
 .background--skyBlue {
-  background-color: rgb(52, 152, 219);
+  background-color: #222;
 }
 
 .color--skyBlue {
-  color: rgb(52, 152, 219);
+  color: #222;
 }
 
 .color--cloud {
-  color: rgb(236, 240, 241);
+  color: #FD9827;
+}
+
+.section--alignCentered {
+  background-color: #FD9827;
 }
 
 .color--grey {
@@ -37,7 +45,7 @@
 }
 
 .color--darkgrey {
-  color: rgb(44, 62, 80);
+  color: #222;
 }
 
 .section__example {
@@ -83,7 +91,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .section {
   font-size: 4.2rem;
-  min-height: 70vh;
+  min-height: 50vh;
   position: relative;
   padding-top: 5rem;
   padding-bottom: 5rem;
